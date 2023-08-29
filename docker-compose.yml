@@ -1,0 +1,6 @@
+services:
+  sqld:
+    image: ghcr.io/libsql/sqld:main
+    ports:
+      - "5001:5001"
+      - "8080:8080"
