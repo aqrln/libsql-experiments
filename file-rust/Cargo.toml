@@ -1,0 +1,10 @@
+[package]
+name = "file-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+common = { path = "../common" }
+color-eyre.workspace = true
+libsql.workspace = true
+tokio.workspace = true
