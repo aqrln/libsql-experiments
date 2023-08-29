@@ -1,6 +1,14 @@
 {
   "name": "libsql-experiments",
   "workspaces": [
-    "http-js-with-new-client"
-  ]
+    "file-js",
+    "http-js"
+  ],
+  "dependencies": {
+    "libsql-experimental": "^0.0.21"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
 }
