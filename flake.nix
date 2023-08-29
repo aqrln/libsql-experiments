@@ -16,16 +16,16 @@
       let
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
-        rustToolchain = pkgs.rust-bin.stable.latest.default;
+        rust = pkgs.rust-bin.stable.latest.default;
         nodejs = pkgs.nodejs_latest;
 
       in
-      {
+      rec {
         formatter = pkgs.nixpkgs-fmt;
 
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
-            rustToolchain
+            rust
             rust-analyzer
 
             nodejs
@@ -33,6 +33,53 @@
             nodejs.pkgs.typescript-language-server
             nodejs.pkgs.vscode-langservers-extracted
           ];
+
+          inputsFrom = builtins.attrValues packages;
+        };
+
+        packages.sqld = pkgs.rustPlatform.buildRustPackage rec {
+          pname = "sqld";
+          version = "0.20.0-dev";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "libsql";
+            repo = "sqld";
+            rev = "5cc90d7ef4e59f1512f4d7acece6889cff9985d4";
+            hash = "sha256-4/gmWsajuCA0NOcIDP3j9kVu3iKKOmKqplbs2Why7kg=";
+          };
+
+          cargoLock = {
+            lockFile = ./sqld-lockfile.toml;
+            outputHashes = {
+              "console-api-0.5.0" = "sha256-ZaRFGPrvUwFEkwHDZpCyM1PVlgNpYkYQNUDw9867jxQ=";
+              "libsqlite3-sys-0.26.0" = "sha256-JzSGpqYtkIq0mVYD0kERIB6rmZUttqkCGne+M4vqTJU=";
+              "octopod-0.1.0" = "sha256-V16fOlIp9BCpyzgh1Aei3Mra/y15v8dQFA8tHdOwZm4=";
+              "tonic-0.9.2" = "sha256-enPQFR/mXum/d9K/q7jU6R6+2ajUHCqRJ/QroDZDPXE=";
+            };
+          };
+
+          cargoBuildFlags = [ "-p" "sqld" ];
+          # buildType = "debug";
+          doCheck = false;
+
+          nativeBuildInputs = with pkgs; [ pkg-config ];
+
+          buildInputs = with pkgs;
+            let
+              commonInputs = [ protobuf ];
+              linuxInputs = [ openssl ];
+              darwinInputs = [ darwin.apple_sdk.frameworks.Security ];
+            in
+            commonInputs ++ (if stdenv.isDarwin then darwinInputs else linuxInputs);
+        };
+
+        packages.sqld-primary = pkgs.writeShellApplication {
+          name = "sqld-primary";
+          text = ''
+            ${packages.sqld}/bin/sqld          \
+              --http-listen-addr 0.0.0.0:8080  \
+              --grpc-listen-addr 0.0.0.0:5001  \
+          '';
         };
       }
     );
