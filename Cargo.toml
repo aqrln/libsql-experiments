@@ -1,0 +1,16 @@
+[workspace]
+resolver = "2"
+members = [
+    "http-rust",
+    "embedded-replica-rust"
+]
+
+[workspace.dependencies.libsql]
+version = "0.1"
+git = "https://github.com/libsql/libsql"
+
+[patch.crates-io]
+tonic = { git = "https://github.com/hyperium/tonic" }
+tonic-web = { git = "https://github.com/hyperium/tonic" }
+tonic-build = { git = "https://github.com/hyperium/tonic" }
+tower-http = { git = "https://github.com/tower-rs/tower-http", branch = "lucio/grpc-defaults" }

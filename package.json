@@ -1,0 +1,6 @@
+{
+  "name": "libsql-experiments",
+  "workspaces": [
+    "http-js-with-new-client"
+  ]
+}
