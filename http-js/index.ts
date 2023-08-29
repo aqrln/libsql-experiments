@@ -1,7 +1,7 @@
 import Database from "libsql-experimental";
 
 if (!process.env.SQLD_URL) {
-  throw new Error('missing SQLD_URL, run `direnv allow`')
+  throw new Error("missing SQLD_URL, run `direnv allow`");
 }
 
 const db = new Database(process.env.SQLD_URL);
