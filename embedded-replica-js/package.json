@@ -1,0 +1,7 @@
+{
+  "name": "embedded-replica-js",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ts-node index.ts"
+  }
+}

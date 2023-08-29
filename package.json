@@ -2,7 +2,8 @@
   "name": "libsql-experiments",
   "workspaces": [
     "file-js",
-    "http-js"
+    "http-js",
+    "embedded-replica-js"
   ],
   "dependencies": {
     "libsql-experimental": "^0.0.21"
