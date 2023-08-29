@@ -31,6 +31,7 @@
             nodejs
             nodejs.pkgs.prettier
             nodejs.pkgs.typescript-language-server
+            nodejs.pkgs.vscode-langservers-extracted
           ];
         };
       }
