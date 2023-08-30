@@ -6,6 +6,7 @@ async fn main() -> color_eyre::Result<()> {
 
     let url = std::env::var("SQLD_URL")?;
     let auth_token = std::env::var("SQLD_AUTH_TOKEN")?;
+
     let db = Database::open_remote(url, auth_token)?;
     let conn = db.connect().await?;
 
