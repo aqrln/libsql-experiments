@@ -665,6 +665,12 @@ checksum = "add0ab9360ddbd88cfeb3bd9574a1d85cfdfa14db10b3e21d3700dbc4328758f"
 [[package]]
 name = "http-rust"
 version = "0.1.0"
+dependencies = [
+ "color-eyre",
+ "common",
+ "libsql",
+ "tokio",
+]
 
 [[package]]
 name = "httparse"
