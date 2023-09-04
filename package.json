@@ -6,7 +6,7 @@
     "embedded-replica-js"
   ],
   "dependencies": {
-    "libsql-experimental": "^0.0.21"
+    "libsql-experimental": "^0.0.32"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.5.0",
