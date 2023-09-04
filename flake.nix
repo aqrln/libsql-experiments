@@ -44,8 +44,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "libsql";
             repo = "sqld";
-            rev = "5cc90d7ef4e59f1512f4d7acece6889cff9985d4";
-            hash = "sha256-4/gmWsajuCA0NOcIDP3j9kVu3iKKOmKqplbs2Why7kg=";
+            rev = "28a864605b1303ef6ed1685b6c19936f1534ffb5";
+            hash = "sha256-K9N0tT/JnrNX9f7nVbmcI69LLFnN1I8oTr2Nw4dwtZA=";
           };
 
           cargoLock = {
@@ -54,7 +54,7 @@
               "console-api-0.5.0" = "sha256-ZaRFGPrvUwFEkwHDZpCyM1PVlgNpYkYQNUDw9867jxQ=";
               "libsqlite3-sys-0.26.0" = "sha256-JzSGpqYtkIq0mVYD0kERIB6rmZUttqkCGne+M4vqTJU=";
               "octopod-0.1.0" = "sha256-V16fOlIp9BCpyzgh1Aei3Mra/y15v8dQFA8tHdOwZm4=";
-              "tonic-0.9.2" = "sha256-enPQFR/mXum/d9K/q7jU6R6+2ajUHCqRJ/QroDZDPXE=";
+              "tonic-0.9.2" = "sha256-8OziOZOyZl1PkpLmfx9zGgtWfGLjgB+w4U/VevHDHcE=";
             };
           };
 
