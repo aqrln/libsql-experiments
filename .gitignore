@@ -6,3 +6,5 @@ node_modules/
 
 data.sqld
 *.db
+
+.envrc.local
