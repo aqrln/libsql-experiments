@@ -4,7 +4,14 @@ if (!process.env.SQLD_URL) {
   throw new Error("missing SQLD_URL, run `direnv allow`");
 }
 
-const db = new Database(process.env.SQLD_URL);
+if (!process.env.SQLD_AUTH_TOKEN) {
+  throw new Error("missing SQLD_AUTH_TOKEN, run `direnv allow`");
+}
+
+const db = new Database(process.env.SQLD_URL, {
+  // @ts-expect-error this is missing from the type definitions
+  authToken: process.env.SQLD_AUTH_TOKEN,
+});
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS user (
