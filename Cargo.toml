@@ -10,7 +10,7 @@ members = [
 [workspace.dependencies]
 color-eyre = "0.6.2"
 libsql = { version = "0.1", git = "https://github.com/libsql/libsql"}
-tokio = { version = "1.32.0", features = ["rt-multi-thread"] }
+tokio = { version = "1.38.2", features = ["rt-multi-thread"] }
 
 [patch.crates-io]
 tonic = { git = "https://github.com/hyperium/tonic" }
